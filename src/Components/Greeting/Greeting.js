@@ -1,10 +1,8 @@
-import React, {Component} from "react";
-import {Text} from "react-native";
+import React, { Component } from "react";
+import { Text } from "react-native";
 
 export default class Greeting extends Component {
   render() {
-    return (
-      <Text>Hello, {this.props.name}</Text>
-    )
+    return <Text style={this.props.style}>Hello, {this.props.name}</Text>;
   }
 }

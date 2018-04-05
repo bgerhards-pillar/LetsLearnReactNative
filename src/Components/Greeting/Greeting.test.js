@@ -1,8 +1,9 @@
 import React from "react";
-import Greeting from "./Greeting";
-
+import { Text, Style } from "react-native";
 import renderer from "react-test-renderer";
-import { Text } from "react-native";
+import { shallow } from "enzyme";
+
+import Greeting from "./Greeting";
 
 it("should be truthy", () => {
   const rendered = renderer.create(<Greeting />).toJSON();
@@ -14,4 +15,10 @@ it("should generate greeting text", () => {
   const rendered = renderer.create(<Greeting name={personName} />).root;
   const text = rendered.findByType(Text).props.children;
   expect(text.join("")).toEqual("Hello, " + personName);
+});
+
+it("should have specified styling", () => {
+  const style = { width: 50 };
+  const rendered = renderer.create(<Greeting style={style} />).toJSON();
+  expect(rendered.props.style.width).toEqual(50);
 });
